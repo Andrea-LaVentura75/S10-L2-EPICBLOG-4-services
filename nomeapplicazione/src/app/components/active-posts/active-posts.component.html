@@ -1,0 +1,19 @@
+<div class="container">
+  <h2 class="text-success text-center mt-3">Active posts</h2>
+  <div class="row row-cols-3 g-4 justify-content-center mt-3">
+    <div
+      class="col p-3 d-flex flex-column ms-1 w-25"
+      *ngFor="let post of postsActive"
+    >
+      <app-single-post [post]="post">
+        <button
+          type="button"
+          class="btn btn-outline-success mb-3"
+          [routerLink]="['/postDetails', post.id]"
+        >
+          CONTINUA A LEGGERE
+        </button>
+      </app-single-post>
+    </div>
+  </div>
+</div>
