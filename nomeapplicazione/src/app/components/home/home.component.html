@@ -47,15 +47,28 @@
 
 <h3 class="mb-3 text-center text-success mt-3">Tutti i nostri posts</h3>
 
-<div *ngFor="let post of arrayPost">
-  <div *ngFor="let tag of post.tags">
-    <button type="button" class="btn btn-success">{{ tag }}</button>
+<h4 class="mb-3 text-center text-success mt-3">
+  Ricerca i post con i tag che preferisci
+</h4>
+
+<div class="d-flex justify-content-center">
+  <div class="ms-2" *ngFor="let tag of uniqueTags">
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="filterPostsByTag(tag)"
+    >
+      {{ tag }}
+    </button>
   </div>
+  <button class="btn btn-secondary ms-2" (click)="clearFilter()">
+    Mostra Tutti
+  </button>
 </div>
 
-<div class="container" *ngIf="arrayPost && arrayPost.length > 0">
+<div class="container" *ngIf="filteredPosts && filteredPosts.length > 0">
   <div class="row row-cols-3 g-4 justify-content-center mt-3">
-    <div class="col" *ngFor="let post of arrayPost">
+    <div class="col" *ngFor="let post of filteredPosts">
       <app-single-post [post]="post">
         <button
           type="button"
